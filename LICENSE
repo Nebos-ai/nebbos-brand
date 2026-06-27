@@ -1,0 +1,20 @@
+Copyright (c) 2026 Nebos-ai. All rights reserved.
+
+This repository is PUBLIC for distribution convenience only (it lets both the
+platform design system and the marketing site install the brand tokens via a
+git-tag dependency with no registry authentication). It is NOT open source.
+
+The Nebbos name, logo, mark, wordmark, and brand assets contained herein are
+proprietary to Nebos-ai and are protected as trademarks and trade dress.
+
+No license, express or implied, is granted to use, copy, modify, distribute, or
+create derivative works of any part of this repository — including the brand
+marks, color tokens, type system, and motion design — except by Nebos-ai and its
+authorized properties (e.g. nebos-frontend / Folio, nebbos-site).
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

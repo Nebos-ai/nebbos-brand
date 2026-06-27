@@ -1,0 +1,134 @@
+/* Layer 1 — OKLCH reference primitives. Import this file into your app's
+   CSS entry AFTER @import "tailwindcss" so the @theme block registers
+   these as Tailwind utilities. Never reference these directly in components
+   — use the semantic aliases in semantic.css instead. */
+
+/* ============================================================================
+   LAYER 1 — Reference primitives (12-stop OKLCH ramps)
+   Generated from locked anchors and curves. Do not hand-edit individual
+   stops — regenerate the full ramp if anchors change.
+
+   Lightness curve (50..1000):
+     0.975, 0.945, 0.890, 0.815, 0.715, [anchor], 0.515, 0.430, 0.355, 0.280, 0.220, 0.165
+   Chroma multiplier (50..1000):
+     0.06, 0.15, 0.33, 0.55, 0.83, 1.00, 1.04, 0.96, 0.83, 0.66, 0.46, 0.30
+   ============================================================================ */
+@theme {
+  /* Pure surfaces — used by `--color-bg-surface` on light, action-primary-fg on dark. */
+  --color-n-0: oklch(1 0 0);
+
+  /* Blue Aura (hue 270.4, anchor 500: oklch(0.605 0.197 270.4) ≈ #637DFF) */
+  --color-ba-50:   oklch(0.975 0.0118 270.4);
+  --color-ba-100:  oklch(0.945 0.0295 270.4);
+  --color-ba-200:  oklch(0.890 0.0650 270.4);
+  --color-ba-300:  oklch(0.815 0.1084 270.4);
+  --color-ba-400:  oklch(0.715 0.1635 270.4);
+  --color-ba-500:  oklch(0.605 0.1970 270.4);
+  --color-ba-600:  oklch(0.515 0.2049 270.4);
+  --color-ba-700:  oklch(0.430 0.1891 270.4);
+  --color-ba-800:  oklch(0.355 0.1635 270.4);
+  --color-ba-900:  oklch(0.280 0.1300 270.4);
+  --color-ba-950:  oklch(0.220 0.0906 270.4);
+  --color-ba-1000: oklch(0.165 0.0591 270.4);
+
+  /* Sky (hue 232.6, anchor 500: oklch(0.748 0.130 232.6) ≈ #41BBF8) */
+  --color-sky-50:   oklch(0.975 0.0078 232.6);
+  --color-sky-100:  oklch(0.945 0.0195 232.6);
+  --color-sky-200:  oklch(0.890 0.0429 232.6);
+  --color-sky-300:  oklch(0.815 0.0715 232.6);
+  --color-sky-400:  oklch(0.715 0.1079 232.6);
+  --color-sky-500:  oklch(0.748 0.1300 232.6);
+  --color-sky-600:  oklch(0.515 0.1352 232.6);
+  --color-sky-700:  oklch(0.430 0.1248 232.6);
+  --color-sky-800:  oklch(0.355 0.1079 232.6);
+  --color-sky-900:  oklch(0.280 0.0858 232.6);
+  --color-sky-950:  oklch(0.220 0.0598 232.6);
+  --color-sky-1000: oklch(0.165 0.0390 232.6);
+
+  /* Tomato (hue 39.9, anchor 500: oklch(0.752 0.131 39.9) ≈ #F6926C) */
+  --color-tom-50:   oklch(0.975 0.0079 39.9);
+  --color-tom-100:  oklch(0.945 0.0197 39.9);
+  --color-tom-200:  oklch(0.890 0.0432 39.9);
+  --color-tom-300:  oklch(0.815 0.0721 39.9);
+  --color-tom-400:  oklch(0.715 0.1087 39.9);
+  --color-tom-500:  oklch(0.752 0.1310 39.9);
+  --color-tom-600:  oklch(0.515 0.1362 39.9);
+  --color-tom-700:  oklch(0.430 0.1258 39.9);
+  --color-tom-800:  oklch(0.355 0.1087 39.9);
+  --color-tom-900:  oklch(0.280 0.0865 39.9);
+  --color-tom-950:  oklch(0.220 0.0603 39.9);
+  --color-tom-1000: oklch(0.165 0.0393 39.9);
+
+  /* Success (hue 145, anchor 500: oklch(0.640 0.150 145)) */
+  --color-suc-50:   oklch(0.975 0.0090 145);
+  --color-suc-100:  oklch(0.945 0.0225 145);
+  --color-suc-200:  oklch(0.890 0.0495 145);
+  --color-suc-300:  oklch(0.815 0.0825 145);
+  --color-suc-400:  oklch(0.715 0.1245 145);
+  --color-suc-500:  oklch(0.640 0.1500 145);
+  --color-suc-600:  oklch(0.515 0.1560 145);
+  --color-suc-700:  oklch(0.430 0.1440 145);
+  --color-suc-800:  oklch(0.355 0.1245 145);
+  --color-suc-900:  oklch(0.280 0.0990 145);
+  --color-suc-950:  oklch(0.220 0.0690 145);
+  --color-suc-1000: oklch(0.165 0.0450 145);
+
+  /* Warning (hue 80, anchor 500: oklch(0.795 0.165 80)) */
+  --color-warn-50:   oklch(0.975 0.0099 80);
+  --color-warn-100:  oklch(0.945 0.0248 80);
+  --color-warn-200:  oklch(0.890 0.0545 80);
+  --color-warn-300:  oklch(0.815 0.0908 80);
+  --color-warn-400:  oklch(0.715 0.1369 80);
+  --color-warn-500:  oklch(0.795 0.1650 80);
+  --color-warn-600:  oklch(0.515 0.1716 80);
+  --color-warn-700:  oklch(0.430 0.1584 80);
+  --color-warn-800:  oklch(0.355 0.1369 80);
+  --color-warn-900:  oklch(0.280 0.1089 80);
+  --color-warn-950:  oklch(0.220 0.0759 80);
+  --color-warn-1000: oklch(0.165 0.0495 80);
+
+  /* Error (hue 25, anchor 500: oklch(0.620 0.220 25)) */
+  --color-err-50:   oklch(0.975 0.0132 25);
+  --color-err-100:  oklch(0.945 0.0330 25);
+  --color-err-200:  oklch(0.890 0.0726 25);
+  --color-err-300:  oklch(0.815 0.1210 25);
+  --color-err-400:  oklch(0.715 0.1826 25);
+  --color-err-500:  oklch(0.620 0.2200 25);
+  --color-err-600:  oklch(0.515 0.2288 25);
+  --color-err-700:  oklch(0.430 0.2112 25);
+  --color-err-800:  oklch(0.355 0.1826 25);
+  --color-err-900:  oklch(0.280 0.1452 25);
+  --color-err-950:  oklch(0.220 0.1012 25);
+  --color-err-1000: oklch(0.165 0.0660 25);
+
+  /* Neutrals (hue 268, hand-picked low chroma 0.005..0.020 per spec) */
+  --color-n-50:   oklch(0.975 0.0050 268);
+  --color-n-100:  oklch(0.945 0.0050 268);
+  --color-n-200:  oklch(0.890 0.0080 268);
+  --color-n-300:  oklch(0.815 0.0120 268);
+  --color-n-400:  oklch(0.715 0.0160 268);
+  --color-n-500:  oklch(0.615 0.0180 268);
+  --color-n-600:  oklch(0.515 0.0200 268);
+  --color-n-700:  oklch(0.430 0.0180 268);
+  --color-n-800:  oklch(0.355 0.0160 268);
+  --color-n-900:  oklch(0.280 0.0120 268);
+  --color-n-950:  oklch(0.220 0.0080 268);
+  --color-n-1000: oklch(0.165 0.0050 268);
+
+  /* Avatar palette — 8 perceptually-distinct colours for deterministic CRM/entity avatars.
+     Each maps to an existing ramp stop; do not add raw hex here — regenerate via ramps. */
+  --color-avatar-1: var(--color-tom-500);   /* warm orange  */
+  --color-avatar-2: var(--color-ba-700);    /* indigo       */
+  --color-avatar-3: var(--color-sky-600);   /* teal-blue    */
+  --color-avatar-4: var(--color-n-700);     /* slate        */
+  --color-avatar-5: var(--color-sky-400);   /* light blue   */
+  --color-avatar-6: var(--color-ba-400);    /* violet       */
+  --color-avatar-7: var(--color-suc-500);   /* emerald      */
+  --color-avatar-8: var(--color-err-500);   /* red          */
+
+  /* Radius scale (mockup: cards 16px, panels 20px, inputs/badges small). */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}

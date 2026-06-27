@@ -1,0 +1,58 @@
+{
+  "name": "@nebbos/brand",
+  "version": "1.0.0",
+  "description": "Nebbos shared brand tokens (logo/color/type/motion) — single source of brand truth, consumed by Folio (@nebos/ui) + the marketing site. ADR-278 AD-3.",
+  "license": "UNLICENSED",
+  "private": false,
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "index.ts",
+    "tokens.ts",
+    "theme.css",
+    "tokens.css",
+    "logo/index.tsx",
+    "logo/paths.ts",
+    "logo/nebbos-mark.svg",
+    "logo/nebbos-lockup.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": "./index.ts",
+    "./tokens": "./tokens.ts",
+    "./theme.css": "./theme.css",
+    "./tokens.css": "./tokens.css",
+    "./logo": "./logo/index.tsx",
+    "./logo/paths": "./logo/paths.ts",
+    "./logo/mark.svg": "./logo/nebbos-mark.svg",
+    "./logo/lockup.svg": "./logo/nebbos-lockup.svg"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nebos-ai/nebbos-brand.git"
+  },
+  "keywords": [
+    "nebbos",
+    "design-tokens",
+    "brand",
+    "folio"
+  ]
+}

@@ -1,0 +1,36 @@
+# Publish @nebbos/brand to GitHub Packages — DOCUMENTED FUTURE OPTION.
+#
+# v1 consumers depend on this package via a git-tag URL
+# ("@nebbos/brand": "github:Nebos-ai/nebbos-brand#v1.0.0") — no registry, no
+# install auth anywhere (the repo is public). This workflow is NOT part of the v1
+# distribution path; it exists so a future move to a real npm registry is a flip,
+# not a redesign.
+#
+# It is gated on manual dispatch (workflow_dispatch) so it never fires
+# automatically. The commented `push: tags` trigger is the future automation.
+name: publish
+
+on:
+  workflow_dispatch:
+  # push:
+  #   tags:
+  #     - "v*"
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@nebbos"
+      - run: npm publish
+        env:
+          # GITHUB_TOKEN from this repo can publish this repo's package — no PAT.
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

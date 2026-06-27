@@ -1,0 +1,331 @@
+/* @nebos/ui/folio/theme.css — the published Folio THEME CONTRACT (ADR-240 AD-3).
+   The single source for Folio's token layer: @theme utility registrations,
+   :root (dark, the default), and [data-theme="light"] flips. Consumers @import
+   this after `@import "tailwindcss"` and provide the font vars
+   (--font-bricolage / --font-inter / --font-geist-mono) + a next-themes
+   data-theme attribute. ADR-240 AD-7: light & dark are instances of ONE source;
+   tenant/brand identity is applied by re-pointing the semantic layer here, never
+   by forking a parallel palette. Moved verbatim from nebos-frontend/app/globals.css. */
+
+/* ── Folio design tokens exposed as Tailwind utilities ───────────────────── */
+@theme inline {
+  /* shadcn bridge — components consume these names */
+  --color-background:           var(--background);
+  --color-foreground:           var(--foreground);
+  --color-card:                 var(--card);
+  --color-card-foreground:      var(--card-foreground);
+  --color-popover:              var(--popover);
+  --color-popover-foreground:   var(--popover-foreground);
+  --color-primary:              var(--primary);
+  --color-primary-foreground:   var(--primary-foreground);
+  --color-secondary:            var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:                var(--muted);
+  --color-muted-foreground:     var(--muted-foreground);
+  --color-accent:               var(--accent);
+  --color-accent-foreground:    var(--accent-foreground);
+  --color-destructive:          var(--destructive);
+  --color-border:               var(--border);
+  --color-input:                var(--input);
+  --color-ring:                 var(--ring);
+  --color-chart-1:              var(--chart-1);
+  --color-chart-2:              var(--chart-2);
+  --color-chart-3:              var(--chart-3);
+  --color-chart-4:              var(--chart-4);
+  --color-chart-5:              var(--chart-5);
+  --color-sidebar:              var(--sidebar);
+  --color-sidebar-foreground:   var(--sidebar-foreground);
+  --color-sidebar-primary:      var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent:       var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border:       var(--sidebar-border);
+  --color-sidebar-ring:         var(--sidebar-ring);
+
+  /* Folio semantic utilities — use these in new work */
+  --color-fg:           var(--text);
+  --color-fg-muted:     var(--muted-text);
+  --color-fg-faint:     var(--faint);
+  --color-surface:      var(--surface);
+  --color-surface-2:    var(--surface-2);
+  --color-edge:         var(--edge);
+  --color-edge-2:       var(--edge-2);
+  --color-action:       var(--action);
+  --color-on-action:    var(--ink);   /* contrast fg on an action-filled element (flips per theme) */
+  --color-focus:        var(--focus);
+  --color-ok:           var(--ok);
+  --color-warn:         var(--warn);
+  --color-bad:          var(--bad);
+  --color-neutral:      var(--neutral);   /* warm-cream numbers with no +/- valence */
+
+  /* status semantic (governance + billing) */
+  --color-v-success:    var(--ok);
+  --color-v-warning:    var(--warn);
+  --color-v-danger:     var(--bad);
+
+  /* Folio semantic tokens completing the vocabulary (ADR-240 AD-1) — these
+     absorb the pre-Folio app-* gaps. All theme-aware: the text/action/
+     w-NN/ink-2 bases flip via [data-theme="light"], so they render correct
+     in BOTH modes. fg-2/fg-3/action-soft are color-mix from a flipping base:
+     identical to the old dark-fixed shim in dark, and FIXED in light (the old
+     shim hardcoded light-mode values). */
+  --color-fg-2:         color-mix(in oklab, var(--text) 86%, transparent);
+  --color-fg-3:         color-mix(in oklab, var(--text) 72%, transparent);
+  --color-edge-strong:  var(--w-28);
+  --color-edge-muted:   var(--w-06);
+  --color-background-deep: var(--ink-2);
+  --color-action-soft:  color-mix(in oklab, var(--action) 12%, transparent);
+  --color-panel:        var(--surface);  /* gradient-sheen panel; .bg-panel runtime rule adds the lift */
+
+  /* ── Backward-compat shims for pre-Folio --app-* / --v-* tokens ─────── */
+  /* Maps legacy utility classes used throughout the codebase to Folio         */
+  /* equivalents. Allows incremental per-file migration without breakage.       */
+  --color-app-fg:              var(--text);
+  --color-app-fg-2:            rgba(250,250,250,.86);
+  --color-app-fg-3:            rgba(250,250,250,.72);
+  --color-app-fg-muted:        var(--muted-text);
+  --color-app-fg-subtle:       var(--faint);
+  --color-app-border:          var(--edge);
+  --color-app-border-strong:   var(--w-28);
+  --color-app-border-muted:    var(--w-06);
+  --color-app-panel:           var(--surface);
+  --color-app-panel-alt:       var(--w-06);
+  --color-app-surface:         var(--surface);
+  --color-app-surface-raised:  var(--surface-2);
+  --color-app-surface-hover:   var(--surface-2);
+  --color-app-hover:           var(--w-06);
+  --color-app-bg:              var(--background);
+  --color-app-bg-deep:         var(--ink-2);
+  --color-app-bg-subtle:       var(--w-04);
+  --color-app-bg-soft:         var(--w-04);
+  --color-app-accent:          rgba(99,125,255,.12);
+  /* v-* short aliases not covered by v-success/warning/danger above */
+  --color-v-warn:              var(--warn);
+  --color-v-error:             var(--bad);
+  --color-v-amber:             var(--warn);
+  --color-v-blue:              var(--focus);
+  --color-v-info:              var(--focus);
+  --color-v-border:            var(--edge);
+  --color-v-surface:           var(--surface);
+
+  /* tone-* shims for Ntag (242 files). The @nebos/ui semantic.css that defines
+     these is NOT imported by the app, so colored Ntag pills had no tint/border
+     and rendered as flat colored text. Map to Folio status colors per spec §7.5
+     (dot + label over ~14% tint, 32% border). */
+  --color-tone-green-bg:       color-mix(in oklab, var(--ok) 14%, transparent);
+  --color-tone-green-border:   color-mix(in oklab, var(--ok) 32%, transparent);
+  --color-tone-amber-bg:       color-mix(in oklab, var(--warn) 14%, transparent);
+  --color-tone-amber-border:   color-mix(in oklab, var(--warn) 32%, transparent);
+  --color-tone-red-bg:         color-mix(in oklab, var(--bad) 14%, transparent);
+  --color-tone-red-border:     color-mix(in oklab, var(--bad) 32%, transparent);
+  --color-tone-blue-bg:        color-mix(in oklab, var(--action) 16%, transparent);
+  --color-tone-blue-border:    color-mix(in oklab, var(--action) 32%, transparent);
+  --color-tone-blue-fg:        var(--action);
+  --color-tone-cyan-bg:        color-mix(in oklab, var(--focus) 14%, transparent);
+  --color-tone-cyan-border:    color-mix(in oklab, var(--focus) 32%, transparent);
+  --color-tone-pink-bg:        color-mix(in oklab, var(--accent-3) 14%, transparent);
+  --color-tone-pink-border:    color-mix(in oklab, var(--accent-3) 32%, transparent);
+
+  /* Folio radius scale */
+  --radius-sm:  8px;
+  --radius-md:  11px;
+  --radius-lg:  16px;
+  --radius-xl:  18px;
+  --radius-pill: 999px;
+  /* product-* radius aliases (backward-compat for pre-Folio pages) */
+  --radius-product-xs:  4px;
+  --radius-product-sm:  var(--radius-sm);
+  --radius-product-md:  var(--radius-md);
+  --radius-product-lg:  var(--radius-lg);
+
+  /* Folio font families */
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    var(--font-inter), var(--font-dm-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:    var(--font-geist-mono), var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Folio easing */
+  --ease-fluid:  cubic-bezier(.16, 1, .3, 1);
+  --ease-out:    cubic-bezier(.22, 1, .36, 1);
+  --ease-spring: cubic-bezier(.34, 1.4, .64, 1);
+
+  /* Folio fluid type ramp */
+  --font-size-xs:   clamp(.75rem,   .73rem + .10vw,  .8125rem);
+  --font-size-sm:   clamp(.8125rem, .79rem + .12vw,  .875rem);
+  --font-size-base: clamp(.9375rem, .91rem + .15vw,  1.0625rem);
+  --font-size-lg:   clamp(1.0625rem,1rem + .30vw,    1.1875rem);
+  --font-size-xl:   clamp(1.25rem,  1.12rem + .60vw, 1.5rem);
+  --font-size-2xl:  clamp(1.625rem, 1.40rem + 1.0vw, 2.125rem);
+  --font-size-3xl:  clamp(2.0rem,   1.55rem + 1.8vw, 3.0rem);
+  --font-size-4xl:  clamp(2.8rem,   1.50rem + 6.0vw, 7.0rem);
+
+  /* Folio z-index system */
+  --z-field:   0;
+  --z-scrim:   1;
+  --z-content: 2;
+  --z-nav:     40;
+  --z-overlay: 55;
+  --z-sidebar: 60;
+  --z-cmdk:    100;
+
+  /* Folio shadows */
+  --shadow-glass:
+    inset 0 1px 0 0 rgba(255,255,255,.28),
+    inset 0 0 0 1px rgba(255,255,255,.04),
+    0 24px 70px -20px rgba(0,0,0,.7),
+    0 8px 24px -12px rgba(0,0,0,.5);
+}
+
+/* ── Brand palette (2026-06-26 founder refresh) ──────────────────────────────
+   Slate neutral ramp (used for ink / background / text anchors; surfaces keep
+   the translucent --w-* ladder layered over these):
+     25 #FAFAFA · 50 #F7F7F7 · 100 #F0F0F1 · 200 #ECECED · 300 #CECFD2
+     400 #94979C · 500 #85888E · 600 #61656C · 700 #373A41 · 800 #22262F
+     900 #13161B · 950 #0C0E12
+   Blue/indigo accent:  Blue Aura #637DFF (primary) · Pastel Light Indigo
+   #BBC7FF · Muted Dark Blue #3B4470 · cyan #67E8FF (focus).
+   Contrast-checked (WCAG): dark text #FAFAFA/bg #0C0E12 = 18.5; action
+   #637DFF/bg = 5.43; dark-fg #0C0E12 on #637DFF fill = 5.43 (white = 3.41, so
+   action fills carry DARK fg in dark mode). Light --action darkens to #4A5FE0
+   (5.02 on #FAFAFA) for accent-text legibility — same dark/light split Folio
+   already used for periwinkle. ───────────────────────────────────────────── */
+
+/* ── Folio design tokens — dark-first (the default) ──────────────────────── */
+:root {
+  /* ---------- PRIMITIVES ---------- */
+  --ink:   #0c0e12;   /* slate-950 */
+  --ink-2: #13161b;   /* slate-900 */
+
+  /* blue/indigo accent set */
+  --accent-1: #637dff;   /* Blue Aura — primary */
+  --accent-2: #67e8ff;   /* cyan — secondary / focus */
+  --accent-3: #bbc7ff;   /* pastel light indigo — gradient tail */
+
+  /* translucency ladder */
+  --w-04: rgba(255,255,255,.04);
+  --w-05: rgba(255,255,255,.05);
+  --w-06: rgba(255,255,255,.06);
+  --w-08: rgba(255,255,255,.085);
+  --w-10: rgba(255,255,255,.10);
+  --w-14: rgba(255,255,255,.14);
+  --w-16: rgba(255,255,255,.16);
+  --w-28: rgba(255,255,255,.28);
+  --w-55: rgba(255,255,255,.55);
+
+  /* ---------- SEMANTIC ---------- */
+  --text:      #fafafa;                  /* slate-25 */
+  --muted-text:rgba(250,250,250,.60);
+  --faint:     rgba(250,250,250,.40);
+
+  /* surfaces */
+  --glass:     var(--w-05);
+  --glass-2:   var(--w-08);
+  --surface:   var(--w-04);
+  --surface-2: var(--w-06);
+  --edge:      var(--w-10);
+  --edge-2:    var(--w-16);
+
+  /* actions */
+  --action:    var(--accent-1);
+  --focus:     var(--accent-2);
+
+  /* status (founder palette 2026-06-26) */
+  --ok:      #96e072;   /* positive green */
+  --warn:    #f94144;   /* urgent / warning — the brand attention red */
+  --bad:     #f94144;   /* error / overdue — same attention red */
+  --neutral: #f1ede6;   /* warm cream — numbers with no positive/negative valence */
+
+  /* ---------- SHADCN BRIDGE (dark-first) ---------- */
+  --radius: 0.75rem;
+
+  --background:            #0c0e12;   /* slate-950 */
+  --foreground:            #fafafa;
+  --card:                  rgba(255,255,255,.04);
+  --card-foreground:       #fafafa;
+  --popover:               #13161b;   /* slate-900 */
+  --popover-foreground:    #fafafa;
+  --primary:               #637dff;   /* Blue Aura */
+  --primary-foreground:    #0c0e12;   /* dark fg on the blue fill — 5.43:1 (white = 3.41) */
+  --secondary:             rgba(255,255,255,.06);
+  --secondary-foreground:  #fafafa;
+  --muted:                 rgba(255,255,255,.06);
+  --muted-foreground:      rgba(250,250,250,.60);
+  --accent:                rgba(99,125,255,.16);
+  --accent-foreground:     #fafafa;
+  --destructive:           #f94144;
+  --border:                rgba(255,255,255,.10);
+  --input:                 rgba(255,255,255,.10);
+  --ring:                  #67e8ff;
+
+  --chart-1: #637dff;   /* Blue Aura */
+  --chart-2: #67e8ff;   /* cyan */
+  --chart-3: #96e072;   /* positive green */
+  --chart-4: #ffd27e;   /* amber (chart series — distinct from status) */
+  --chart-5: #bbc7ff;   /* pastel indigo */
+
+  --sidebar:                      rgba(255,255,255,.04);
+  --sidebar-foreground:           #fafafa;
+  --sidebar-primary:              #637dff;
+  --sidebar-primary-foreground:   #0c0e12;
+  --sidebar-accent:               rgba(99,125,255,.16);
+  --sidebar-accent-foreground:    #fafafa;
+  --sidebar-border:               rgba(255,255,255,.08);
+  --sidebar-ring:                 #67e8ff;
+}
+
+/* ── Light theme override ────────────────────────────────────────────────── */
+[data-theme="light"], :root[data-theme="light"] {
+  --background: #fafafa;   /* slate-25 */
+  --foreground: #0c0e12;   /* slate-950 */
+  --card:                 rgba(12,14,18,.03);
+  --card-foreground:      #0c0e12;
+  --popover:              #ececed;   /* slate-200 */
+  --popover-foreground:   #0c0e12;
+  --primary:              #4a5fe0;   /* Blue Aura, darkened for light-bg contrast (5.02:1) */
+  --primary-foreground:   #ffffff;
+  --secondary:            rgba(12,14,18,.06);
+  --secondary-foreground: #0c0e12;
+  --muted:                rgba(12,14,18,.06);
+  --muted-foreground:     rgba(12,14,18,.62);
+  --accent:               rgba(99,125,255,.12);
+  --accent-foreground:    #0c0e12;
+  --destructive:          #f94144;
+  --border:               rgba(12,14,18,.10);
+  --input:                rgba(12,14,18,.10);
+  --ring:                 #0aa6c2;
+
+  --glass:     rgba(255,255,255,.55);
+  --glass-2:   rgba(255,255,255,.75);
+  --surface:   rgba(12,14,18,.03);
+  --surface-2: rgba(12,14,18,.06);
+  --edge:      rgba(12,14,18,.10);
+  --edge-2:    rgba(12,14,18,.16);
+  --action:    #4a5fe0;   /* darker Blue Aura — 5.02:1 on the slate-25 bg */
+  --focus:     #0aa6c2;
+
+  /* Folio semantic text — MUST flip or body text stays white = invisible on
+     light. The --color-app-* shims resolve var(--text) at runtime, so flipping
+     these here fixes every shimmed text utility too. */
+  --text:       #0c0e12;   /* slate-950 */
+  --muted-text: rgba(12,14,18,.62);
+  --faint:      rgba(12,14,18,.42);
+  --ink:        #fafafa;   /* slate-25 */
+  --ink-2:      #ececed;   /* slate-200 */
+  /* neutral-number color flips to a warm dark on light (cream would vanish). */
+  --neutral:    #373a41;   /* slate-700 — warm dark neutral */
+  --ok:         #2e7d32;   /* positive green, darkened for light-bg legibility (4.9:1) */
+  --warn:       #d92d30;   /* attention red, darkened for light-bg legibility (4.6:1) */
+  --bad:        #d92d30;
+
+  /* Tint primitives flip to slate-black-alpha so any surface/border/hover
+     derived from --w-* (and the white-alpha legacy shims) stays visible on
+     light. */
+  --w-04: rgba(12,14,18,.04);
+  --w-05: rgba(12,14,18,.05);
+  --w-06: rgba(12,14,18,.06);
+  --w-08: rgba(12,14,18,.085);
+  --w-10: rgba(12,14,18,.10);
+  --w-14: rgba(12,14,18,.14);
+  --w-16: rgba(12,14,18,.16);
+  --w-28: rgba(12,14,18,.28);
+  --w-55: rgba(12,14,18,.55);
+}

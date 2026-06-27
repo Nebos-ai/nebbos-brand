@@ -1,0 +1,423 @@
+/* RETIRED per ADR-240 AD-4 — the ids-* brand color layer is superseded by the Folio theme contract. Brand identity = a theme (re-point the semantic layer), not a parallel palette. Unimported; kept only for history. idvor/viz primitives remain. */
+/*
+ * ============================================================
+ * IDVOR DESIGN SYSTEM — MASTER TOKEN FILE
+ * NBS-T2-112 · Wave 1 of 7 · Institution Register
+ * ============================================================
+ * USAGE
+ *   Next.js: import '@/tokens/tokens.css' in app/layout.tsx
+ *   or:      @import './tokens/tokens.css' in globals.css
+ *
+ * HIERARCHY CONTRACT
+ *   L1 — enormous signal   hero figures, page claim
+ *   L2 — grouped context   section heads, serif voice
+ *   L3 — working line      actionable rows, body text
+ *   L4 — recessed bedrock  provenance, mono records, NEVER glass
+ *
+ * TOKEN LAYERS
+ *   --primitive-*   raw OKLCH values, not for direct use in components
+ *   --color-*       semantic roles (what the color means)
+ *   --text-* etc    typography scale
+ *   --btn-* etc     component-scoped tokens
+ * ============================================================
+ */
+
+:root {
+
+  /* ============================================================
+     0. PRIMITIVE PALETTE
+     Five founder hexes + derived white. Immutable.
+     #002626 = ink full = oklch(0.250 0.042 197)
+     #0E4749 = petrol  = oklch(0.370 0.058 197)
+     #95C623 = lime    = oklch(0.755 0.180 125)  mark-only
+     #E55812 = verm    = oklch(0.615 0.185  40)  mark-only
+     #EFE7DA = ground  = oklch(0.945 0.014  85)
+     #FAFDFD = white-0 = oklch(0.993 0.0035 197) derived from ink hue
+     ============================================================ */
+
+  /* Ground family — warm cream, hue 85 */
+  --primitive-ground-0:    oklch(0.993 0.0035 197); /* air / ink-derived white */
+  --primitive-ground-1:    oklch(0.962 0.011   85); /* raised card surfaces */
+  --primitive-ground-2:    oklch(0.945 0.014   85); /* #EFE7DA page ground */
+  --primitive-ground-3:    oklch(0.925 0.015   85); /* inset / track */
+  --primitive-ground-4:    oklch(0.908 0.016   85); /* hover */
+  --primitive-ground-5:    oklch(0.885 0.018   85); /* hairline borders */
+  --primitive-ground-6:    oklch(0.858 0.019   85); /* stronger borders */
+
+  /* Ink family — teal-black, hue 197. One substance from full ink to white. */
+  --primitive-ink-deep:    oklch(0.210 0.040  197); /* masthead, deepest */
+  --primitive-ink-full:    oklch(0.250 0.042  197); /* #002626 primary text */
+  --primitive-ink-2:       oklch(0.420 0.038  197); /* secondary text */
+  --primitive-ink-3:       oklch(0.555 0.030  197); /* tertiary / labels */
+  --primitive-ink-white-2: oklch(0.975 0.009  197); /* #F0F9F9 mist */
+  --primitive-ink-white-1: oklch(0.985 0.006  197); /* #F6FBFB frost */
+  --primitive-ink-white-0: oklch(0.993 0.0035 197); /* #FAFDFD THE white */
+  --primitive-on-ink:      oklch(0.930 0.010  197); /* text on ink/masthead */
+  --primitive-on-ink-2:    oklch(0.750 0.022  197); /* secondary on ink */
+
+  /* Petrol — #0E4749, the only pressable color */
+  --primitive-petrol-full: oklch(0.370 0.058  197);
+  --primitive-petrol-hi:   oklch(0.440 0.062  195);
+  --primitive-petrol-3:    oklch(0.880 0.028  197); /* tint border */
+  --primitive-petrol-2:    oklch(0.930 0.022  197); /* tint bg */
+
+  /* Lime — #95C623, good / alive. MARK-ONLY on white — use -text for words */
+  --primitive-lime-full:   oklch(0.755 0.180  125); /* #95C623 */
+  --primitive-lime-text:   oklch(0.462 0.115  127); /* AA-safe on white */
+  --primitive-lime-bg:     oklch(0.928 0.055  125); /* tint bg */
+
+  /* Vermillion — #E55812, attention / due. MARK-ONLY on white */
+  --primitive-verm-full:   oklch(0.615 0.185   40); /* #E55812 */
+  --primitive-verm-text:   oklch(0.488 0.160   40); /* AA-safe on white */
+  --primitive-verm-bg:     oklch(0.934 0.048   40); /* tint bg */
+  --primitive-verm-deep:   oklch(0.450 0.150   35); /* danger button */
+
+  /* Rules — ink at alpha */
+  --primitive-rule-soft:   oklch(0.250 0.042 197 / 0.09);
+  --primitive-rule:        oklch(0.250 0.042 197 / 0.16);
+  --primitive-rule-strong: oklch(0.250 0.042 197 / 0.75);
+  --primitive-rule-solid:  oklch(0.250 0.042 197 / 1.00);
+
+
+  /* ============================================================
+     1. SEMANTIC COLOR TOKENS — use these in all components
+     ============================================================ */
+
+  --color-page:            var(--primitive-ink-white-0);
+  --color-ground:          var(--primitive-ground-2);
+  --color-surface:         var(--primitive-ground-1);
+  --color-surface-lo:      var(--primitive-ground-3);
+  --color-surface-hover:   var(--primitive-ground-4);
+
+  --color-border-soft:     var(--primitive-rule-soft);
+  --color-border:          var(--primitive-rule);
+  --color-border-strong:   var(--primitive-rule-strong);
+
+  --color-text:            var(--primitive-ink-full);
+  --color-text-2:          var(--primitive-ink-2);
+  --color-text-3:          var(--primitive-ink-3);
+
+  --color-action:          var(--primitive-petrol-full);
+  --color-action-hi:       var(--primitive-petrol-hi);
+  --color-action-bg:       var(--primitive-petrol-2);
+  --color-action-border:   var(--primitive-petrol-3);
+  --color-action-text:     var(--primitive-on-ink);
+
+  --color-ok:              var(--primitive-lime-full);
+  --color-ok-text:         var(--primitive-lime-text);
+  --color-ok-bg:           var(--primitive-lime-bg);
+
+  --color-warn:            var(--primitive-verm-full);
+  --color-warn-text:       var(--primitive-verm-text);
+  --color-warn-bg:         var(--primitive-verm-bg);
+  --color-danger-bg:       var(--primitive-verm-deep);
+
+  --color-ink-deep:        var(--primitive-ink-deep);
+  --color-on-ink:          var(--primitive-on-ink);
+  --color-on-ink-2:        var(--primitive-on-ink-2);
+
+
+  /* ============================================================
+     2. TYPOGRAPHY
+     Law: Fraunces speaks · Geist counts · Geist Mono testifies
+     ============================================================ */
+
+  --font-serif:   "Fraunces", Georgia, serif;
+  --font-sans:    "Geist", system-ui, -apple-system, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, monospace;
+
+  --text-2xs:   8px;
+  --text-xs:    8.5px;
+  --text-sm:    11px;
+  --text-base:  13px;
+  --text-md:    14px;
+  --text-lg:    18px;
+  --text-xl:    22px;
+  --text-2xl:   28px;
+  --text-3xl:   36px;
+  --text-4xl:   52px;
+  --text-5xl:   72px;
+
+  --weight-light:    300;
+  --weight-book:     430;
+  --weight-medium:   520;
+  --weight-semibold: 570;
+  --weight-bold:     640;
+  --weight-heavy:    700;
+
+  --tracking-tight:   -0.025em;
+  --tracking-base:     0;
+  --tracking-mono:     0.06em;
+  --tracking-label:    0.14em;
+  --tracking-eyebrow:  0.20em;
+
+  --leading-tight:   1.13;
+  --leading-snug:    1.35;
+  --leading-base:    1.55;
+  --leading-relaxed: 1.65;
+  --leading-loose:   1.85;
+
+
+  /* ============================================================
+     3. SPACING
+     ============================================================ */
+
+  --sp-1:   4px;   --sp-2:   8px;   --sp-3:  12px;
+  --sp-4:  16px;   --sp-5:  20px;   --sp-6:  24px;
+  --sp-7:  28px;   --sp-8:  32px;   --sp-10: 40px;
+  --sp-12: 48px;   --sp-14: 56px;   --sp-16: 64px;
+  --sp-20: 80px;
+
+
+  /* ============================================================
+     4. DEPTH & SHADOW (one light at 100°, hue-tinted, never black)
+     ============================================================ */
+
+  --shadow-1:
+    0 1px 2px oklch(0.22 0.03 197 / 0.07),
+    0 4px 10px -4px oklch(0.22 0.03 197 / 0.11);
+
+  --shadow-2:
+    0 1px 2px oklch(0.22 0.03 197 / 0.09),
+    0 7px 18px -6px oklch(0.22 0.03 197 / 0.15);
+
+  --shadow-3:
+    0 2px 4px oklch(0.22 0.03 197 / 0.09),
+    0 14px 32px -12px oklch(0.22 0.03 197 / 0.20);
+
+  --shadow-4:
+    0 4px 8px oklch(0.22 0.03 197 / 0.10),
+    0 28px 64px -24px oklch(0.22 0.03 197 / 0.30);
+
+  --shadow-inset:       inset 0 1px 2px oklch(0.22 0.03 197 / 0.08);
+  --shadow-inset-deep:  inset 0 2px 5px oklch(0.22 0.03 197 / 0.12);
+
+  --shadow-action:
+    0 1px 2px oklch(0.20 0.04 197 / 0.28),
+    0 8px 22px -9px oklch(0.22 0.04 197 / 0.48);
+
+  --shadow-modal:
+    0 4px 8px oklch(0.22 0.03 197 / 0.10),
+    0 28px 64px -24px oklch(0.22 0.04 197 / 0.45);
+
+
+  /* ============================================================
+     5. MOTION
+     Law: settle never bounce · rules draw · numbers tally
+          stamps land · mutation ban (posting a fact = no animation)
+          every clause yields to prefers-reduced-motion
+     ============================================================ */
+
+  --ease-std:    cubic-bezier(0.22, 0.8,  0.28, 1);    /* settle */
+  --ease-mech:   cubic-bezier(0.3,  1.35, 0.4,  1);    /* switch thunk only */
+
+  --dur-micro:    80ms;
+  --dur-action:  140ms;
+  --dur-reveal:  500ms;
+  --dur-draw:    700ms;
+  --dur-tally:  1300ms;
+  --dur-bar:     800ms;
+  --dur-stamp:   360ms;
+
+  --stagger-1:  55ms;   --stagger-2: 110ms;  --stagger-3: 165ms;
+  --stagger-4: 220ms;   --stagger-5: 275ms;  --stagger-6: 330ms;
+
+
+  /* ============================================================
+     6. LAYER DEPTH MARKERS — every component declares its layer
+     ============================================================ */
+
+  /* L1 hero */
+  --l1-size-figure:  var(--text-4xl);
+  --l1-size-mega:    var(--text-5xl);
+  --l1-weight:       var(--weight-bold);
+  --l1-tracking:     var(--tracking-tight);
+  --l1-font:         var(--font-sans);
+
+  /* L2 section */
+  --l2-font:         var(--font-serif);
+  --l2-size:         var(--text-2xl);
+  --l2-weight:       var(--weight-medium);
+  --l2-border:       1.5px solid var(--color-border-strong);
+
+  /* L3 working */
+  --l3-font:         var(--font-sans);
+  --l3-size:         var(--text-base);
+  --l3-weight:       var(--weight-book);
+  --l3-row-pad:      14px 0;
+  --l3-border:       1px solid var(--color-border);
+  --l3-hover:        var(--color-surface-hover);
+  --l3-sel-rule:     2px solid var(--color-action);
+
+  /* L4 bedrock — the ONE inset surface, never glass */
+  --l4-font:         var(--font-mono);
+  --l4-size:         10.5px;
+  --l4-tracking:     var(--tracking-mono);
+  --l4-leading:      var(--leading-loose);
+  --l4-bg:           var(--color-surface);
+  --l4-border-left:  2px solid var(--color-action);
+  --l4-shadow:       var(--shadow-inset-deep);
+  --l4-pad:          13px 18px;
+
+
+  /* ============================================================
+     7. COMPONENT TOKENS
+     ============================================================ */
+
+  /* Rail */
+  --rail-width:   226px;
+  --rail-active-rule: 2px solid var(--color-ok); /* lime — active state */
+
+  /* Button */
+  --btn-bg-pri:      linear-gradient(in oklch 170deg, oklch(0.40 0.058 194), oklch(0.32 0.056 200));
+  --btn-border-pri:  oklch(0.23 0.045 197);
+  --btn-glaze:       linear-gradient(180deg, oklch(1 0 0 / 0.14), transparent 48%);
+  --btn-size:        var(--text-base);
+  --btn-weight:      var(--weight-semibold);
+  --btn-radius:      3px;
+  --btn-pad:         10px 20px;
+  --btn-pad-sm:       8px 14px;
+  --btn-pad-lg:      13px 28px;
+
+  /* Input — underlined aesthetic */
+  --input-bg:        var(--color-surface);
+  --input-border:    var(--color-border);
+  --input-border-b:  var(--color-border-strong);
+  --input-focus:     var(--color-action);
+  --input-error:     var(--color-warn);
+  --input-pad:       11px 13px;
+  --input-size:      var(--text-md);
+  --input-label-font:var(--font-mono);
+  --input-label-size:var(--text-xs);
+  --input-label-trk: var(--tracking-label);
+
+  /* Toggle */
+  --tog-w: 40px;  --tog-h: 22px;  --tog-thumb: 16px;
+  --tog-off:  var(--color-surface-lo);
+  --tog-on:   var(--color-action);
+
+  /* Bar / meter */
+  --bar-h:     5px;
+  --bar-bg:    var(--color-surface-lo);
+  --bar-fill:  var(--color-action);
+  --bar-ceil:  var(--color-warn);
+  --bar-thr:   var(--color-text-3);
+
+  /* Stamp */
+  --stamp-font:    var(--font-mono);
+  --stamp-size:    var(--text-xs);
+  --stamp-trk:     var(--tracking-eyebrow);
+  --stamp-border:  1.5px;
+  --stamp-pad:     4px 10px;
+
+  /* Notice */
+  --notice-border: 1.5px;
+
+  /* Grid gap trick — 1px gap via background on parent */
+  --grid-gap-color: var(--color-border);
+
+  /* Grain */
+  --grain-a: 0.028;
+  --grain-b: 0.048;
+
+  /* Dosage ceiling */
+  --dosage-max: 2%; /* lime + verm total screen coverage */
+
+
+  /* ============================================================
+     8. Z-INDEX STACK
+     ============================================================ */
+
+  --z-base:    0;
+  --z-raised:  1;
+  --z-overlay: 5;
+  --z-topbar:  8;
+  --z-rail:   10;
+  --z-modal:  20;
+  --z-toast:  30;
+
+}
+
+
+/* ============================================================
+   DARK MODE — physics inverted, warm hue preserved
+   ============================================================ */
+
+.dark {
+  --color-page:           oklch(0.168 0.008 90);
+  --color-ground:         oklch(0.182 0.008 90);
+  --color-surface:        oklch(0.210 0.009 90);
+  --color-surface-lo:     oklch(0.196 0.009 90);
+  --color-surface-hover:  oklch(0.224 0.009 90);
+
+  --color-border-soft:    oklch(1 0 0 / 0.05);
+  --color-border:         oklch(1 0 0 / 0.08);
+  --color-border-strong:  oklch(1 0 0 / 0.18);
+
+  --color-text:           oklch(0.920 0.008 90);
+  --color-text-2:         oklch(0.740 0.008 90);
+  --color-text-3:         oklch(0.560 0.007 90);
+
+  --color-action:         oklch(0.680 0.060 197);
+
+  /* Dark: no cast shadows — surface steps + edge lights take over */
+  --shadow-1: none;
+  --shadow-2: none;
+  --shadow-3: 0 16px 40px -12px oklch(0 0 0 / 0.5);
+  --shadow-4: 0 30px 80px -28px oklch(0 0 0 / 0.65);
+  --shadow-inset:      inset 0 1px 0 oklch(1 0 0 / 0.06);
+  --shadow-inset-deep: inset 0 1px 0 oklch(1 0 0 / 0.08);
+
+  --l4-bg: oklch(0.196 0.009 90);
+}
+
+
+/* ============================================================
+   REDUCED MOTION — all durations collapse to 0
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-micro:   0ms; --dur-action:  0ms; --dur-reveal:  0ms;
+    --dur-draw:    0ms; --dur-tally:   0ms; --dur-bar:     0ms;
+    --dur-stamp:   0ms; --ease-std: linear; --ease-mech: linear;
+  }
+}
+
+
+/* ============================================================
+   BASE RESET
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--color-page); color: var(--color-text); font-family: var(--font-sans); }
+button { cursor: pointer; font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+img, svg { display: block; }
+
+/* Tabular numbers */
+.num { font-variant-numeric: tabular-nums; }
+
+/* Grain (apply class="grain" to body) */
+.grain::before {
+  content: "";
+  position: fixed; inset: 0; z-index: var(--z-base);
+  pointer-events: none;
+  opacity: var(--grain-a);
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scroll reveal base */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--dur-reveal) var(--ease-std), transform var(--dur-reveal) var(--ease-std);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: var(--stagger-1); }
+.reveal.d2 { transition-delay: var(--stagger-2); }
+.reveal.d3 { transition-delay: var(--stagger-3); }
+.reveal.d4 { transition-delay: var(--stagger-4); }
+.reveal.d5 { transition-delay: var(--stagger-5); }
+.reveal.d6 { transition-delay: var(--stagger-6); }
