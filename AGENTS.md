@@ -1,5 +1,7 @@
 # AGENTS.md — nebbos-brand
 
+<!-- derives-from: nebos-governance/docs/agents/BASELINE.md -->
+
 Brand-tokens package (`@nebbos/brand`): design tokens, fonts, logos. Minimal surface — but governed.
 
 <!-- Governance binding (ADR-86 structure class / ADR-76 AD-7): bind this surface into the
