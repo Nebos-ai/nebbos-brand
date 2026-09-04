@@ -1,0 +1,6 @@
+# Signers allowed to sign governance and absorbed-artifact commits in this repo.
+# Per Constitution Article XV Rule 7 + ADR-PROV-signer-enrolment-and-composition
+# Amendment 1 (founder-autonomy invariant, 2026-09-04): founder key required from
+# day 1 in every Nebos-managed repo. Add one line per enrolled contributor.
+# Format: <email> <ssh-key-type> <key>
+dmatic@vyer.xyz ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGszZVZ6yx49Qp0LXIuzwW4wA3SSBNCTRLQlZBFXLAX
