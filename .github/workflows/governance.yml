@@ -1,0 +1,25 @@
+# Nebos-ai governance floor — auto-wired via RSSB-21 W3a rollout 2026-08-22.
+# Consumer contract: docs pattern per Constitution Article XV.
+# Reusable workflow spec: Nebos-ai/.github/.github/workflows/repo-governance-floor.yml@v1
+
+name: governance
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  floor:
+    uses: Nebos-ai/.github/.github/workflows/repo-governance-floor.yml@v1
+    with:
+      sub_category: asset
+      # matrix_triple: intentionally omitted — populated only for repos in Article XV
+      # W1 v5 P7 B1 4-triple frozen enum. For this repo, augmented inventory determines.
+      # See nebos-governance/docs/registries/repo_inventory.json.
+      allowed_signers_path: .git-signers/allowed_signers
+      governance_ref: main
