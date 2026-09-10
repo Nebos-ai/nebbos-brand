@@ -126,9 +126,19 @@
   --color-avatar-7: var(--color-suc-500);   /* emerald      */
   --color-avatar-8: var(--color-err-500);   /* red          */
 
-  /* Radius scale (mockup: cards 16px, panels 20px, inputs/badges small). */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
+  /* Radius scale — Folio (unified with theme.css per ADR-240 AD-3 canonical).
+     Historical drift: tokens.css previously carried a mockup-derived scale
+     (0.5/0.625/0.75/1.0rem = 8/10/12/16px) that disagreed with theme.css
+     Folio scale (8/11/16/18px). @nebbos/brand ships a single radius scale
+     across all consumers; tokens.css is Layer-1 primitives, theme.css is
+     Folio theme contract — the numbers must match.
+
+     FE W5 legacy retirement data-derive (2026-08-22): scale is intentional
+     brand identity, not a modular-scale drift → unify tokens.css to
+     theme.css, do not "fix" theme.css to a modular scale. */
+  --radius-sm:  8px;   /* was 0.5rem   (8px)  — unchanged in px */
+  --radius-md:  11px;  /* was 0.625rem (10px) — +1px to Folio md */
+  --radius-lg:  16px;  /* was 0.75rem  (12px) — +4px to Folio lg */
+  --radius-xl:  18px;  /* was 1rem     (16px) — +2px to Folio xl */
+  --radius-pill: 999px;
 }
