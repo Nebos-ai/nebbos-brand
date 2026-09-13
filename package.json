@@ -1,7 +1,7 @@
 {
   "name": "@nebbos/brand",
-  "version": "1.0.0",
-  "description": "Nebbos shared brand tokens (logo/color/type/motion) — single source of brand truth, consumed by Folio (@nebos/ui) + the marketing site. ADR-278 AD-3.",
+  "version": "2.0.0",
+  "description": "Nebbos shared brand tokens (logo/color/type/motion) — single source of brand truth, consumed by Folio (@nebos/ui) + the marketing sites. Governed by ADR-278 AD-3. v2.0.0 (2026-09-13): mark geometry changed from swoosh to flower-of-life; legacy retained under logo/archive/.",
   "license": "UNLICENSED",
   "private": false,
   "type": "module",
@@ -16,7 +16,11 @@
     "logo/index.tsx",
     "logo/paths.ts",
     "logo/nebbos-mark.svg",
-    "logo/nebbos-lockup.svg",
+    "logo/nebbos-mark-accent.svg",
+    "logo/nebbos-mark-inverse.svg",
+    "logo/archive/paths.ts",
+    "logo/archive/nebbos-mark-legacy-wavy.svg",
+    "logo/archive/nebbos-lockup-legacy-wavy.svg",
     "README.md",
     "LICENSE"
   ],
@@ -28,7 +32,11 @@
     "./logo": "./logo/index.tsx",
     "./logo/paths": "./logo/paths.ts",
     "./logo/mark.svg": "./logo/nebbos-mark.svg",
-    "./logo/lockup.svg": "./logo/nebbos-lockup.svg"
+    "./logo/mark-accent.svg": "./logo/nebbos-mark-accent.svg",
+    "./logo/mark-inverse.svg": "./logo/nebbos-mark-inverse.svg",
+    "./logo/archive/paths": "./logo/archive/paths.ts",
+    "./logo/archive/mark-legacy-wavy.svg": "./logo/archive/nebbos-mark-legacy-wavy.svg",
+    "./logo/archive/lockup-legacy-wavy.svg": "./logo/archive/nebbos-lockup-legacy-wavy.svg"
   },
   "peerDependencies": {
     "react": ">=18",
