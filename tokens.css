@@ -126,6 +126,27 @@
   --color-avatar-7: var(--color-suc-500);   /* emerald      */
   --color-avatar-8: var(--color-err-500);   /* red          */
 
+  /* Product-line palette — 4 hues, one per Nebbos customer product.
+     Founder-ratified 2026-09-14 "for now" (verbatim). Grounded in Apple's
+     device-color grammar × Zegna's institutional earth-tone register:
+     grounded neutrals + one warm brown + one deep red + one matte black,
+     no primary saturation. Not derived from the OKLCH ramps above because
+     the palette is a curated hardware-marketing choice, not a modular-
+     scale expansion — hex values are the source of truth.
+
+     The flower-of-life mark ships in all four via stroke inheritance
+     (`stroke="currentColor"` on the SVG, product surfaces set the color
+     via `color: var(--color-product-<slug>)` on the parent element).
+
+     Full reasoning + Apple/Zegna references + product-to-color mapping:
+     https://github.com/Nebos-ai/nebbos-site/blob/main/docs/reference/nebbos-hardware-color-palette-2026-09-14.md
+     Owed follow-up: replace hex values with OKLCH equivalents if a modular
+     ramp system extension is desired (deferred — hex ratified "for now"). */
+  --color-product-platform: #4A4A52;  /* Nebbos Titanium Steel — Platform (gray, operating substrate) */
+  --color-product-app:      #6D4C2F;  /* Nebbos Cedar — App (brown, local native in your hand) */
+  --color-product-mcp:      #7B2F2A;  /* Nebbos Oxblood — MCP (red, tool substrate carrying signal) */
+  --color-product-usb:      #1D1C22;  /* Nebbos Obsidian — USB (black, hardware; matches --color-n-1000) */
+
   /* Radius scale — Folio (unified with theme.css per ADR-240 AD-3 canonical).
      Historical drift: tokens.css previously carried a mockup-derived scale
      (0.5/0.625/0.75/1.0rem = 8/10/12/16px) that disagreed with theme.css

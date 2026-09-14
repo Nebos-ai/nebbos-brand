@@ -1,7 +1,7 @@
 {
   "name": "@nebbos/brand",
-  "version": "2.0.1",
-  "description": "Nebbos shared brand tokens (logo/color/type/motion) — single source of brand truth, consumed by Folio (@nebos/ui) + the marketing sites. Governed by ADR-278 AD-3. v2.0.0 (2026-09-13): mark geometry changed from swoosh to flower-of-life; legacy retained under logo/archive/.",
+  "version": "2.1.0",
+  "description": "Nebbos shared brand tokens (logo/color/type/motion) — single source of brand truth, consumed by Folio (@nebos/ui) + the marketing sites. Governed by ADR-278 AD-3. v2.1.0 (2026-09-14): adds product-line color palette (Titanium Steel · Cedar · Oxblood · Obsidian) for the 4-product taxonomy — flower-of-life renders per product in its color via --color-product-{platform,app,mcp,usb} tokens. v2.0.0 (2026-09-13): mark geometry changed from swoosh to flower-of-life; legacy retained under logo/archive/.",
   "license": "UNLICENSED",
   "private": false,
   "type": "module",
