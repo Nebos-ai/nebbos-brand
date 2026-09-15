@@ -70,6 +70,32 @@ radius.lg;           // "16px"
 easing.fluid;        // "cubic-bezier(.16, 1, .3, 1)"
 ```
 
+## Product-line palette (v2.1.0)
+
+Nebbos ships four customer products (Platform · App · MCP · USB). Each renders the
+flower-of-life mark in its own hue via a semantic token:
+
+| Token | Hex | Name | Product |
+|---|---|---|---|
+| `--color-product-platform` | `#4A4A52` | Titanium Steel | Nebbos.ai platform (gray, operating substrate) |
+| `--color-product-app` | `#6D4C2F` | Cedar | Nebbos app (brown, local native in your hand) |
+| `--color-product-mcp` | `#7B2F2A` | Oxblood | Nebbos MCP (red, tool substrate; NOT Product-Red primary) |
+| `--color-product-usb` | `#1D1C22` | Obsidian | Nebbos USB (black, hardware; matches `--color-n-1000`) |
+
+Founder-ratified 2026-09-14. Grounded in Apple's device-color grammar × Zegna's
+institutional earth-tone register (see palette reasoning in
+[`nebbos-site/docs/reference/nebbos-hardware-color-palette-2026-09-14.md`](https://github.com/Nebos-ai/nebbos-site/blob/main/docs/reference/nebbos-hardware-color-palette-2026-09-14.md)).
+
+Usage — set the parent element's `color` and the mark's `currentColor` picks it up:
+
+```tsx
+import { NebbosMark } from "@nebbos/brand/logo";
+
+<div style={{ color: "var(--color-product-usb)" }}>
+  <NebbosMark size="lg" />
+</div>
+```
+
 ## Versioning
 
 Semver via git tags:
@@ -78,7 +104,7 @@ Semver via git tags:
 - **minor** — new tokens.
 - **patch** — value tweaks.
 
-Tag and push to release: `git tag v1.1.0 && git push origin v1.1.0`. Consumers then bump
+Tag and push to release: `git tag v2.1.0 && git push origin v2.1.0`. Consumers then bump
 the `#vX.Y.Z` ref.
 
 ## Publishing to a registry (future option)
