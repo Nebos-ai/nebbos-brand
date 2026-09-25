@@ -3,6 +3,6 @@
 # Amendment 1 (founder-autonomy invariant, 2026-09-04): founder key required from
 # day 1 in every Nebos-managed repo. Add one line per enrolled contributor.
 # Format: <email> <ssh-key-type> <key>
-dmatic@vyer.xyz ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGszZVZ6yx49Qp0LXIuzwW4wA3SSBNCTRLQlZBFXLAX
-# Rotated 2026-09-07 — supersedes dmatic@vyer.xyz on future commits (both kept during transition)
-billing@tr3i.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII3AvCEwQHWZZ3L4UXHaAmxC2r7SK4n6LkWr030OpfTu
+admin@nebbos.ai ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGszZVZ6yx49Qp0LXIuzwW4wA3SSBNCTRLQlZBFXLAX
+# Rotated 2026-09-07 — supersedes 2026-09-06 key on future commits (both kept during transition)
+admin@nebbos.ai ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII3AvCEwQHWZZ3L4UXHaAmxC2r7SK4n6LkWr030OpfTu
