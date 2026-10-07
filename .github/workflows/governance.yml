@@ -16,6 +16,9 @@ permissions:
 jobs:
   floor:
     uses: Nebos-ai/.github/.github/workflows/repo-governance-floor.yml@v1
+    # Flows the org secret GOVERNANCE_MIRROR_TOKEN into the floor so its
+    # corpus-backed checks run (Nebos-ai/.github#2).
+    secrets: inherit
     with:
       sub_category: asset
       # matrix_triple: intentionally omitted — populated only for repos in Article XV
