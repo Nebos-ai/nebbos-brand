@@ -1,6 +1,6 @@
 {
   "name": "@nebbos/brand",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Nebbos shared brand tokens (logo/color/type/motion) — single source of brand truth, consumed by Folio (@nebos/ui) + the marketing sites. Governed by ADR-278 AD-3. v2.1.0 (2026-09-14): adds product-line color palette (Titanium Steel · Cedar · Oxblood · Obsidian) for the 4-product taxonomy — flower-of-life renders per product in its color via --color-product-{platform,app,mcp,usb} tokens. v2.0.0 (2026-09-13): mark geometry changed from swoosh to flower-of-life; legacy retained under logo/archive/.",
   "license": "UNLICENSED",
   "private": false,
@@ -22,7 +22,14 @@
     "logo/archive/nebbos-mark-legacy-wavy.svg",
     "logo/archive/nebbos-lockup-legacy-wavy.svg",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "document-tokens.ts",
+    "tokens/document.json",
+    "tokens/deck.json",
+    "fonts/manrope/*.ttf",
+    "fonts/manrope/OFL.txt",
+    "fonts/fira-code/*.ttf",
+    "fonts/fira-code/OFL.txt"
   ],
   "exports": {
     ".": "./index.ts",
@@ -36,7 +43,11 @@
     "./logo/mark-inverse.svg": "./logo/nebbos-mark-inverse.svg",
     "./logo/archive/paths": "./logo/archive/paths.ts",
     "./logo/archive/mark-legacy-wavy.svg": "./logo/archive/nebbos-mark-legacy-wavy.svg",
-    "./logo/archive/lockup-legacy-wavy.svg": "./logo/archive/nebbos-lockup-legacy-wavy.svg"
+    "./logo/archive/lockup-legacy-wavy.svg": "./logo/archive/nebbos-lockup-legacy-wavy.svg",
+    "./document-tokens": "./document-tokens.ts",
+    "./tokens/document.json": "./tokens/document.json",
+    "./tokens/deck.json": "./tokens/deck.json",
+    "./fonts/*": "./fonts/*"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -62,5 +73,9 @@
     "design-tokens",
     "brand",
     "folio"
-  ]
+  ],
+  "scripts": {
+    "test": "node --test tests/*.test.ts",
+    "export:tokens": "node scripts/export-tokens.ts"
+  }
 }
