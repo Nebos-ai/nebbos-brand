@@ -75,7 +75,7 @@
     "folio"
   ],
   "scripts": {
-    "test": "node --test tests/",
+    "test": "node --test "tests/*.test.ts"",
     "export:tokens": "node scripts/export-tokens.ts"
   }
 }

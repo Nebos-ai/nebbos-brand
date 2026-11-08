@@ -17,4 +17,4 @@ jobs:
         with:
           node-version: "24"
       # No dependencies and no lockfile: Node 24 runs the .ts tests directly.
-      - run: node --test tests/
+      - run: node --test "tests/*.test.ts"
