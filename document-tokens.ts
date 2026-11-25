@@ -1,21 +1,22 @@
 /**
- * @nebbos/brand — document and deck token sets (LRNE-36).
+ * @nebbos/brand — document token set (LRNE-36).
  *
- * Two NEW groups, additive to tokens.ts (no existing token changes). tokens.ts
- * serves email/PDF-adjacent JS surfaces with the platform palette; THESE sets
- * carry the printed-document style and the marketing-deck style.
+ * A NEW group, additive to tokens.ts (no existing token changes). tokens.ts
+ * serves email/PDF-adjacent JS surfaces with the platform palette; THIS set
+ * carries the printed-document style.
  *
  * documentTokens: the Nebbos document format ratified by the founder 2026-09-28
  *   (memory feedback_nebbos_document_format_style_ratified_2026_09_28, derived
  *   from nebbos-technical-reference.pdf v14). Every PDF or HTML Nebbos document
  *   conforms to it.
- * deckTokens: the Delta brief editorial marketing register, recorded as given
- *   in the delta-brief-editorial skill (assets/tokens.css, references/design-system.md).
+ * Deck tokens are not here: every deck follows the reference deck system (founder
+ * 2026-11-08), which replaced the Delta brief look for decks. A deck set is added
+ * when it is rebuilt from that deck.
  *
  * Single source for three readers: the Python document engine (nebos-backend
- * LRNE-33), the in-app TypeScript reader and the style check. The JSON files
- * tokens/document.json and tokens/deck.json are exports of THESE objects
- * (`npm run export:tokens`); tests fail if they drift.
+ * LRNE-33), the in-app TypeScript reader and the style check. The JSON file
+ * tokens/document.json is an export of THIS object (`npm run export:tokens`);
+ * tests fail if they drift.
  *
  * Changing any value requires a version bump and a new snapshot in
  * tokens/snapshots/ (see tests/document-tokens.test.ts). Additive only.
@@ -106,116 +107,5 @@ export const documentTokens = {
     codeLeftBorderPx: 3,
     pdfHeader: { offsetFromTopMm: 12, ruleWidthPt: 0.4 },
     pdfFooter: { offsetFromBottomMm: 10, ruleWidthPt: 0.4 },
-  },
-} as const;
-
-export const DECK_TOKENS_VERSION = "1.0.0";
-
-const deckLight = {
-  paper: "#FFFFFF",
-  paper2: "#EDEEEB",
-  paper3: "#E1DAD0",
-  ink: "#1D1C22",
-  ink2: "#3F4045",
-  ink3: "#606162",
-  muted: "#5F6067",
-  navy: "#557994",
-  navy2: "#6B8089",
-  navy3: "#A3C1DB",
-  navy4: "#557994",
-  accent: "#A36630",
-  accent2: "#F6A03F",
-  gold: "#A36630",
-  gold2: "#F6A03F",
-  success: "#3F7A5C",
-  warning: "#B8862B",
-  rule: "#D8D6D5",
-  rule2: "#E7E7E7",
-} as const;
-
-const deckDark = {
-  paper: "#1D1C22",
-  paper2: "#1B1B20",
-  paper3: "#232329",
-  ink: "#F4F4F6",
-  ink2: "#C9CACF",
-  ink3: "#9C9C9D",
-  muted: "#7E7F87",
-  navy: "#A3C1DB",
-  navy2: "#AEB6C1",
-  navy3: "#BBC1BF",
-  navy4: "#6D7787",
-  accent: "#F6A03F",
-  accent2: "#FDDA88",
-  gold: "#F6A03F",
-  gold2: "#FDDA88",
-  success: "#6BB596",
-  warning: "#E0AC44",
-  rule: "#2E2E34",
-  rule2: "#212127",
-} as const;
-
-export const deckTokens = {
-  name: "nebbos-deck-delta-brief-editorial",
-  version: DECK_TOKENS_VERSION,
-  source:
-    "delta-brief-editorial skill (assets/tokens.css, references/design-system.md); Delta brief NEB-26-02 Rev 19; marketing register ratified 2026-08-22",
-  fonts: {
-    serif: {
-      stack: [
-        "trust-3a",
-        "Trust 3A",
-        "Newsreader",
-        "Charter",
-        "Iowan Old Style",
-        "Georgia",
-        "serif",
-      ],
-      role: "display and headings",
-      files: null,
-      licenseNote:
-        "Trust 3A is served from Adobe Fonts kit gkk3ycm (domain allowlist); not self-hostable. Newsreader (Google Fonts) is the fallback.",
-    },
-    sans: {
-      stack: [
-        "Host Grotesk",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        "Segoe UI",
-        "system-ui",
-        "sans-serif",
-      ],
-      role: "body and UI",
-      files: null,
-      licenseNote: "Google Fonts, weights 300-800 with italics.",
-    },
-    mono: {
-      stack: [
-        "JetBrains Mono",
-        "SF Mono",
-        "Menlo",
-        "Consolas",
-        "Roboto Mono",
-        "monospace",
-      ],
-      role: "numbers, code, IDs",
-      files: null,
-      licenseNote: "Google Fonts, weights 400 and 500.",
-    },
-    weights: { xlight: 200, light: 300, bold: 700 },
-    lineHeight: { display: 1.08, text: 1.1 },
-    bodySizePx: 15,
-    bodyLineHeight: 1.55,
-  },
-  color: { light: deckLight, dark: deckDark },
-  shapes: {
-    emphasisCardRadius: "0 30px 0 0",
-    plusMarker: { longPx: 19, thicknessPx: 1.5, color: "orange" },
-    eyebrow: {
-      case: "uppercase",
-      letterSpacing: "0.18em",
-      font: "mono",
-      color: "gold",
-    },
   },
 } as const;

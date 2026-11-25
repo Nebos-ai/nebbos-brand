@@ -1,12 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
-import {
-  documentTokens,
-  deckTokens,
-  DOCUMENT_TOKENS_VERSION,
-  DECK_TOKENS_VERSION,
-} from "../document-tokens.ts";
+import { documentTokens, DOCUMENT_TOKENS_VERSION } from "../document-tokens.ts";
 
 const root = new URL("../", import.meta.url);
 const readJson = (rel: string): unknown => JSON.parse(readFileSync(new URL(rel, root), "utf8"));
@@ -50,23 +45,8 @@ test("document.json carries every ratified document token", () => {
   assert.equal(doc.layout.codeLeftBorderPx, 3);
 });
 
-test("JSON exports equal the TypeScript objects (one source for engine and app)", () => {
+test("JSON export equals the TypeScript object (one source for engine and app)", () => {
   assert.deepEqual(readJson("tokens/document.json"), JSON.parse(JSON.stringify(documentTokens)));
-  assert.deepEqual(readJson("tokens/deck.json"), JSON.parse(JSON.stringify(deckTokens)));
-});
-
-test("deck tokens record the Delta brief editorial fonts and colours as given", () => {
-  assert.deepEqual(deckTokens.fonts.serif.stack.slice(0, 3), ["trust-3a", "Trust 3A", "Newsreader"]);
-  assert.equal(deckTokens.fonts.sans.stack[0], "Host Grotesk");
-  assert.equal(deckTokens.fonts.mono.stack[0], "JetBrains Mono");
-  assert.equal(deckTokens.color.light.paper, "#FFFFFF");
-  assert.equal(deckTokens.color.light.ink, "#1D1C22");
-  assert.equal(deckTokens.color.light.gold, "#A36630");
-  assert.equal(deckTokens.color.light.accent2, "#F6A03F");
-  assert.equal(deckTokens.color.dark.paper, "#1D1C22");
-  assert.equal(Object.keys(deckTokens.color.light).length, 19);
-  assert.equal(Object.keys(deckTokens.color.dark).length, 19);
-  assert.equal(deckTokens.shapes.emphasisCardRadius, "0 30px 0 0");
 });
 
 // sfnt directory: version 0x00010000 (TrueType outlines), glyf present, fvar absent (static).
@@ -96,7 +76,6 @@ test("every font file named in the tokens exists, loads as a static TTF and has 
 test("snapshot: values changed without a version bump fail", () => {
   for (const [name, tokens, version] of [
     ["document", documentTokens, DOCUMENT_TOKENS_VERSION],
-    ["deck", deckTokens, DECK_TOKENS_VERSION],
   ] as const) {
     const rel = `tokens/snapshots/${name}-${version}.json`;
     assert.ok(existsSync(new URL(rel, root)), `no snapshot for ${name} ${version}: bump the version and run npm run export:tokens`);

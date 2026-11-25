@@ -25,7 +25,6 @@
     "LICENSE",
     "document-tokens.ts",
     "tokens/document.json",
-    "tokens/deck.json",
     "fonts/manrope/*.ttf",
     "fonts/manrope/OFL.txt",
     "fonts/fira-code/*.ttf",
@@ -46,7 +45,6 @@
     "./logo/archive/lockup-legacy-wavy.svg": "./logo/archive/nebbos-lockup-legacy-wavy.svg",
     "./document-tokens": "./document-tokens.ts",
     "./tokens/document.json": "./tokens/document.json",
-    "./tokens/deck.json": "./tokens/deck.json",
     "./fonts/*": "./fonts/*"
   },
   "peerDependencies": {

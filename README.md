@@ -141,8 +141,8 @@ Extracted verbatim (byte-for-byte token values) from `@nebos/ui` in `nebos-front
 `idvor/tokens.css` (superseded by the Folio theme contract per ADR-240 AD-4) is archived,
 not exported.
 
-## Document and deck tokens (LRNE-36)
+## Document tokens (LRNE-36)
 
-`@nebbos/brand/document-tokens` exports `documentTokens` (the ratified 2026-09-28 Nebbos document format: Manrope, Fira Code, paper/ink/accent palette, A4 margins, type scale) and `deckTokens` (the Delta brief editorial marketing register). The same values ship as JSON for the Python document engine: `tokens/document.json` and `tokens/deck.json`. Static Manrope (300-700) and Fira Code (400, 500) TTFs with their SIL OFL licences are in `fonts/`, instanced from the variable fonts in google/fonts.
+`@nebbos/brand/document-tokens` exports `documentTokens` (the ratified 2026-09-28 Nebbos document format: Manrope, Fira Code, paper/ink/accent palette, A4 margins, type scale). The same values ship as JSON for the Python document engine: `tokens/document.json`. There are no deck tokens yet: decks follow the reference deck system (founder 2026-11-08), and a deck set is added when it is rebuilt from that deck. Static Manrope (300-700) and Fira Code (400, 500) TTFs with their SIL OFL licences are in `fonts/`, instanced from the variable fonts in google/fonts.
 
 Changing a value needs a version bump in `document-tokens.ts`, then `npm run export:tokens` (writes the JSON and a new `tokens/snapshots/*-<version>.json`). `npm test` fails when values change under an unchanged version.
